@@ -22,9 +22,11 @@
 #ifndef PCAMODEL_HPP_
 #define PCAMODEL_HPP_
 
-#include "cereal/access.hpp"
 #include "cereal/types/array.hpp"
+#include "cereal/cereal.hpp"
+#include "cereal/access.hpp"
 #include "cereal/types/vector.hpp"
+#include "cereal/archives/binary.hpp"
 
 #include "opencv2/core/core.hpp"
 #include "cerealutils.hpp"
@@ -241,6 +243,7 @@ public:
 		// no assert - OpenCV checks ::at in debug builds
 		return eigenvalues.at<float>(index);
 	};
+
 
 public:
 

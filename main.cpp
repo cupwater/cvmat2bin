@@ -22,6 +22,7 @@
 #include "MatlabIO.hpp"
 #include "MatlabIOContainer.hpp"
 #include "pca_model.hpp"
+#include <fstream>
 
 using namespace cv;
 using namespace std;
@@ -91,6 +92,11 @@ int main(int argc, char **argv)
             expr_model.normalised_pca_basis = variables[n].data<Mat>();
         }
     }
+
+
+    ofstream file("test.mat", std::ios::binary);
+    cereal::BinaryOutputArchive output_archive(file);
+    output_archive( pca_shape_model );
 
     return 0;
 }

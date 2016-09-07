@@ -1,4 +1,4 @@
-# Install script for directory: /home/annye/Desktop/annye_work/cvmatio
+# Install script for directory: /home/cupwater/opensource/cvmat2bin
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/annye/Desktop/annye_work/cvmatio/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/cupwater/opensource/cvmat2bin/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/annye/Desktop/annye_work/cvmatio/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/cupwater/opensource/cvmat2bin/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)
