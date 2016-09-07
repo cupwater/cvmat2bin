@@ -60,18 +60,18 @@ int main(int argc, char **argv)
         if (variables[n].name().compare("mu_shape") == 0)
         {
             pca_shape_model.mean = variables[n].data<Mat>();
+            std::cout<<pca_shape_model.mean.rows<<'\t'<<pca_shape_model.mean.cols<<std::endl;
             //cvtColor(im, im, CV_RGB2BGR);
         }
         if (variables[n].name().compare("pca_shape") == 0)
         {
             pca_shape_model.normalised_pca_basis = variables[n].data<Mat>();
+            std::cout<<pca_shape_model.normalised_pca_basis.rows<<'\t'<<pca_shape_model.normalised_pca_basis.cols<<std::endl;
         }
          if (variables[n].name().compare("tri") == 0)
         {
             tempMat = variables[n].data<Mat>();
-            //we assume the tempMat is continuous
-            //if (tempMat.isContinuous())
-              //   pca_shape_model.triangle_list = tempMat();
+            std::cout<<tempMat.rows<<'\t'<<tempMat.cols<<std::endl;
             for (int r = 0; r < tempMat.cols; r=r+3)
             {
                 std::array<int, 3> temp;
@@ -86,17 +86,23 @@ int main(int argc, char **argv)
          if (variables[n].name().compare("mu_exp") == 0)
         {
             expr_model.mean = variables[n].data<Mat>();
+            std::cout<<expr_model.mean.rows<<'\t'<<expr_model.mean.cols<<std::endl;
         }
          if (variables[n].name().compare("expr_disp_intel") == 0)
         {
             expr_model.normalised_pca_basis = variables[n].data<Mat>();
+            std::cout<<expr_model.normalised_pca_basis.rows<<'\t'<<expr_model.normalised_pca_basis.cols<<std::endl;
         }
     }
 
 
-    ofstream file("test.mat", std::ios::binary);
-    cereal::BinaryOutputArchive output_archive(file);
-    output_archive( pca_shape_model );
+    ofstream shape_file("pca_shape_basis.bin", std::ios::binary);
+    cereal::BinaryOutputArchive shape_archive(shape_file);
+    shape_archive( pca_shape_model );
+
+    ofstream expr_file("expression_basis.bin", std::ios::binary);
+    cereal::BinaryOutputArchive expr_archive(expr_file);
+    expr_archive( expr_model );
 
     return 0;
 }
